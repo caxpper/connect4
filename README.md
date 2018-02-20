@@ -18,26 +18,28 @@ Mystery requirement:
 ### Teams
 
 #### Team 1
-- Li
-- JeanPaul
-- Harrison
-- Alejandro
+- Li Zhang
+- Brian Morris
+- Parker Rebensdorf
 
 #### Team 2
-- Sasha
-- Ryan
-- William 
-- Hannah 
-- Parker
+- Ryan Soto
+- Duy Nguyen
+- Jean Paul Olukemi
 
 #### Team 3
-- Brian
-- David
-- Matthew
-- Evan
+- Harrison Truong
+- Nolan Emerson
+- David Forman
+- Sasha Ross
 
 #### Team 4
-- Duy
-- Nolan
-- Keaton
-- Jeffrei
+- William Cheng
+- Hanran Kim
+- Jeffrei Cher
+- Matthew Kane
+
+#### Team 5
+- Keaton Kreiger
+- Alejandro Gaspar
+- Evan Ippolito
