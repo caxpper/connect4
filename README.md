@@ -25,7 +25,7 @@ Mystery requirement:
 
 #### Team 2
 - Sasha
-- Evan
+- Ryan
 - William 
 - Hannah 
 - Parker
@@ -34,7 +34,7 @@ Mystery requirement:
 - Brian
 - David
 - Matthew
-- Ryan
+- Evan
 
 #### Team 4
 - Duy
