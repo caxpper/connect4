@@ -2,10 +2,10 @@
 class Player{
 
 
-    constructor(name,token,color,type){
+    constructor(name,token,classPlayer,type){
         this.name = name;
         this.token = token;
-        this.color = color;
+        this.classPlayer = classPlayer;
         this.type = type || human;
     }
 
@@ -48,6 +48,7 @@ class Game{
         this.arrayPlayers = arrayPlayers;
         this.playerTurn = 0;
         this.gameBoard = this.initGameBoard(numCol,numRow);
+        this.win = false;
     }
 
     initGameBoard(numCol,numRow){
@@ -72,10 +73,11 @@ class Game{
             if(result[2] === false){
                 if(this.checkAllColumnsFull()){
                    return Game.full;
-                }else{
-                    this.playerTurn = (this.playerTurn + 1) % this.arrayPlayers.length;
                 }
+            }else{
+                this.win = true;
             }
+            this.playerTurn = (this.playerTurn + 1) % this.arrayPlayers.length;
             return result;
         }
         return false;
