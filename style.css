@@ -33,9 +33,10 @@ body {
 }
 
 .mainContent {
-    width: 83.6%;
+    width: 83%;
     height: 89.4%;
     border: solid;
+    display: flex;
 }
 
 .gameBoard {
