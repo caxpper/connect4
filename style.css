@@ -6,7 +6,6 @@ body {
 .gameContainer {
     width: 100%;
     height: 98%;
-    border: solid red;
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
@@ -16,6 +15,12 @@ body {
     width: 100%;
     height: 10%;
     background-color: green;
+}
+
+.header > h2 {
+    margin: 0%;
+    text-align: center;
+    font-size: 7vh;
 }
 
 .leftNav {
@@ -28,25 +33,20 @@ body {
     margin: 0;
 }
 
-.header > h2 {
-    margin: 0%;
-    text-align: center;
-}
-
 .mainContent {
     width: 83%;
     height: 89.4%;
-    border: solid;
     display: flex;
 }
 
 .gameBoard {
     position: relative;
-    height: 45vw;
+    height: 75vmin;
     display: flex;
-    width: 45vw;
+    width: 75vmin;
     margin: auto;
     padding-top: 1%;
+
 }
 
 .column {
