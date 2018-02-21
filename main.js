@@ -4,14 +4,36 @@ function initializeApp() {
     var game = new gameBoard();
     game.createBoard();
 //---------Click Handlers-------------//
-    $('#0').click
-    (console.log("Click 0 working"));
-    $('#1').click(console.log("Click 1 working"));
-    $('#2').click(alert("Click 2 working"));
-    $('#3').click(alert("Click 3 working"));
-    $('#4').click(alert("Click 4 working"));
-    $('#5').click(alert("Click 5 working"));
-    $('#6').click(alert("Click 6 working"));
+    $('#0').on("click", function () {
+        (console.log("Click 0 working"));
+    });
+    $('#1').on("click", function () {
+        (console.log("Click 1 working"));
+    });
+    $('#2').on("click", function () {
+        (console.log("Click 2 working"));
+    });
+    $('#3').on("click", function () {
+        (console.log("Click 3 working"));
+    });
+    $('#4').on("click", function () {
+        (console.log("Click 4 working"));
+    });
+    $('#5').on("click", function () {
+        (console.log("Click 5 working"));
+    });
+    $('#6').on("click", function () {
+        (console.log("Click 6 working"));
+    })
+
+
+    // (console.log("Click 0 working"));
+    // $('#1').click(console.log("Click 1 working"));
+    // $('#2').click(console.log("Click 2 working"));
+    // $('#3').click(console.log("Click 3 working"));
+    // $('#4').click(console.log("Click 4 working"));
+    // $('#5').click(console.log("Click 5 working"));
+    // $('#6').click(console.log("Click 6 working"));
 }
 class gameBoard {
     constructor() {
