@@ -41,7 +41,21 @@ body {
 
 .gameBoard {
     height: 95%;
+    display: flex;
     border: solid;
     width: 86%;
     margin: auto;
+}
+
+.column {
+    height: 100%;
+    border: solid;
+    width: 14%;
+}
+
+.square {
+    height: 16.4%;
+    width: 100%;
+    border: solid 1px;
+    margin: 0;
 }
