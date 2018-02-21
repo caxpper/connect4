@@ -4,7 +4,14 @@ function initializeApp() {
     var game = new gameBoard();
     game.createBoard();
 //---------Click Handlers-------------//
-    $('.column').click()
+    $('#0').click
+    (console.log("Click 0 working"));
+    $('#1').click(console.log("Click 1 working"));
+    $('#2').click(alert("Click 2 working"));
+    $('#3').click(alert("Click 3 working"));
+    $('#4').click(alert("Click 4 working"));
+    $('#5').click(alert("Click 5 working"));
+    $('#6').click(alert("Click 6 working"));
 }
 class gameBoard {
     constructor() {
@@ -23,7 +30,12 @@ class gameBoard {
                     id: i + "_" + j
 
                 });
+                var circle = $('<div>',{
+                   class: "circle"
+
+                });
                 square.appendTo(column);
+                circle.appendTo(square);
             }
             column.appendTo(".gameBoard")
         }
