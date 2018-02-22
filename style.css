@@ -97,7 +97,6 @@ body {
     background-color: transparent;
     border: 0;
 }
-
 .player2{
     background-image: url("image/player2.png");
     background-repeat: no-repeat;
@@ -105,4 +104,77 @@ body {
     background-size: contain;
     background-color: transparent;
     border: 0;
+}
+/*------------------------------------Modal-----------------------------------------------*/
+
+#modal {
+    position: fixed;
+    font-family: monospace;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+}
+.modalcontent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 45%;
+    height: 40%;
+    padding: 20px;
+}
+.modalconent > form {
+    width: 50%;
+    height: 30%;
+}
+.modalH1{
+    font-size: 32pt;
+    margin: 0;
+    background-color: lightskyblue;
+    height: 15%;
+    text-align: center;
+}
+
+.rulesContainer{
+    font-size: 15pt;
+    text-align: center;
+    width: 35%;
+    height: 81%;
+    float: right;
+    margin-right: 8%;
+    margin-left: 7%;
+    font-family: monospace;
+}
+.form1{
+    width: 25%;
+    float: right;
+     font-size: 17pt;
+     height: 85%;
+     background-color: lightskyblue;
+}
+.form2{
+    width: 25%;
+    float: left;
+    font-size: 17pt;
+    height: 85%;
+    background-color: lightskyblue;
+}
+#connect4Header{
+    margin: 0;
+}
+.firstPlayer{
+    margin: 5px;
+    height: 5%;
+}
+.secondPlayer {
+    margin: 5px;
+    height: 5%;
+}
+.input{
+    height: 10%;
+    width: 10%;
 }

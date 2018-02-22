@@ -11,6 +11,42 @@
     <title>Document</title>
 </head>
 <body>
+<!-----------------------Modal--------------------------------->
+<div id="modal">
+    <div class="modalcontent">
+        <h1 class="modalH1">Welcome to Connect 4!</h1>
+            <div class="form2">
+            First player name:<br>
+            <input type="text" name="firstname" class="firstPlayer">
+            <br>
+            <input type="radio" name="opponent" value="Human" checked class="input"> Human<br>
+            <br>
+            <input type="radio" name="opponent" value="Dumb-A.I" class="input"> Dumb A.i<br>
+            <br>
+            <input type="radio" name="opponent" value="Smart-A.I" class="input"> Smart A.i
+            <br>
+        </div>
+        <div class="form1">
+            Second player name:<br>
+            <input type="text" name="secondname" class="secondPlayer">
+            <br>
+            <input type="radio" name="opponent" value="Human" checked class="input"> Human<br>
+            <br>
+            <input type="radio" name="opponent" value="Dumb-A.I" class="input"> Dumb A.i<br>
+            <br>
+            <input type="radio" name="opponent" value="Smart-A.I" class="input"> Smart A.i
+            <br>
+        </div>
+        <br>
+        <div class="rulesContainer">
+            <h2 id="connect4Header">Connect 4 Rules</h2>
+            <p>To win Connect Four you must be the first player to get four of your colored checkers
+                in a row either horizontally, vertically or diagonally. </p>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+<!-----------------------End of Modal--------------------------------->
     <div class="gameContainer">
         <div class="header">
             <h2>Connect Four</h2>
