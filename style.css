@@ -36,48 +36,49 @@ body {
 .mainContent {
     width: 84%;
     height: 90%;
-    display: flex;
-    background: #de6161;
-	background: -webkit-linear-gradient(to bottom, #bbccff, #0012b3);
-    background: linear-gradient(to bottom, #bbccff, #0012b3);
-    flex-direction: column;
+    background: white;
+    text-align: center;
 }
 
 .gameBoard {
     display: inline-block;
     position: relative;
-    height: 75vmin;
-    width: 75vmin;
+    height: 88%;
+    width: 88%;
     margin: auto;
-    padding-top: 10%;
+    padding-top: 6%;
 }
 
 .gameBoardContainer {
-    display: flex;
-    width: 54%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 3%;
-    height: 83%;
+    display: inline-block;
+    width: 84vmin;
+    height: 84vmin;
+    padding-top: 0%;
+    font-size: 0;
 }
 
 .leftSide {
+    display: inline-block;
     width: 5%;
-    border: solid;
-    height: 102%;
+    border: solid 0.3vmin;
+    height: 85%;
     border-top-left-radius: 30% 25px;
     border-top-right-radius: 30% 25px;
     background-color: rgb(46, 102, 255);
+    margin-top: 2%;
+    vertical-align: top;
 }
 
 .rightSide {
+    display: inline-block;
     width: 5%;
-    border: solid;
-    height: 102%;
+    border: solid 0.3vmin;
+    height: 85%;
     border-top-left-radius: 30% 25px;
     border-top-right-radius: 30% 25px;
     background-color: rgb(46, 102, 255);
-    margin-left: 1%;
+    margin-top: 2%;
+    vertical-align: top;
 }
 
 .playerTurn {
@@ -91,17 +92,18 @@ body {
     display: inline-block;
     position: relative;
     height: 100%;
-    width: 14.2%;
+    width: 14.28%;
     border-color: #00568f;
     background-color: white;
     z-index: 2;
+    background-color: transparent;
 }
 
 .square {
-    height: 14.2%;
+    height: 14.28%;
     width: 100%;
     margin: 0;
-    background-image: url("image/board.png");
+    background-image: url(image/board.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

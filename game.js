@@ -72,7 +72,7 @@ class Game{
             var result = this.checkWin(indexCol, indexRow);
             if(result[2] === false){
                 if(this.checkAllColumnsFull()){
-                   return Game.full;
+                   return [indexCol,indexRow,Game.full];
                 }
             }else{
                 this.win = true;
