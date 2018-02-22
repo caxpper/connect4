@@ -34,9 +34,8 @@ body {
 }
 
 .mainContent {
-    width: 84%;
+    width: 80%;
     height: 90%;
-    background: white;
     text-align: center;
 }
 
@@ -111,15 +110,6 @@ body {
     z-index: 3;
 }
 
-.circle {
-    border: solid 0.1vw;
-    height: 80%;
-    width: 80%;
-    border-radius: 50%;
-    background-color: white;
-    border-color: #00568f;
-}
-
 .winText{
     font-family: Arial;
     position: absolute;
@@ -131,23 +121,6 @@ body {
     color: darkblue;
     font-weight: bold;
     z-index: 4;
-}
-
-.player1{
-    background-image: url("image/player1.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-color: transparent;
-    border: 0;
-}
-.player2{
-    background-image: url("image/player2.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-color: transparent;
-    border: 0;
 }
 
 .token{
