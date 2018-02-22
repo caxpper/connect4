@@ -2,10 +2,10 @@
 class Player{
 
 
-    constructor(name,token,classPlayer,type){
+    constructor(name,token,image,type){
         this.name = name;
         this.token = token;
-        this.classPlayer = classPlayer;
+        this.image = image;
         this.type = type || human;
     }
 
@@ -64,15 +64,15 @@ class Game{
     }
 
     playTurn(indexCol){
-        var indexRow = this.changeTokenInBoard(indexCol);
+        var indexRow = this.changeTokenInBoard(indexCol,this.gameBoard,this.arrayPlayers[this.playerTurn].token);
         if(indexRow === null){
             console.log("column full");
             return null;
         }else {
-            var result = this.checkWin(indexCol, indexRow);
+            var result = this.checkWin(indexCol, indexRow,this.arrayPlayers[this.playerTurn].token,this.gameBoard,4);
             if(result[2] === false){
                 if(this.checkAllColumnsFull()){
-                   return Game.full;
+                   return [indexCol,indexRow,Game.full];
                 }
             }else{
                 this.win = true;
@@ -83,39 +83,39 @@ class Game{
         return false;
     }
 
-    changeTokenInBoard(indexCol){
+    changeTokenInBoard(indexCol,board,token){
 
-        var column = this.gameBoard[indexCol];
+        var column = board[indexCol];
         for(var i = column.length-1; i >= 0; i--){
             if(column[i] === '_'){
-                column[i] = this.arrayPlayers[this.playerTurn].token;
+                column[i] = token;
                 return i;
             }
         }
         return null;
     }
 
-    checkWin(indexCol,indexRow){
-        if(this.checkColumn(indexCol)){
+    checkWin(indexCol,indexRow,token,board,numTotalTokens){
+        if (this.checkRow(indexRow,token,board,numTotalTokens)){
             return [indexCol,indexRow,true];
-        }else if (this.checkRow(indexRow)){
+        }else if(this.checkColumn(indexCol,token,board,numTotalTokens)){
             return [indexCol,indexRow,true];
-        }else if(this.checkRightDiagonal(indexCol,indexRow)){
+        }else if(this.checkRightDiagonal(indexCol,indexRow,token,board,numTotalTokens)){
             return [indexCol,indexRow,true];
-        }else if(this.checkLeftDiagonal(indexCol,indexRow)){
+        }else if(this.checkLeftDiagonal(indexCol,indexRow,token,board,numTotalTokens)){
             return [indexCol,indexRow,true];
         }
         return [indexCol,indexRow,false];
     }
 
 
-    checkColumn(indexCol){
+    checkColumn(indexCol,token,board,numTotalTokens){
         var numTokens = 0;
-        var column = this.gameBoard[indexCol];
+        var column = board[indexCol];
         for(var i = this.numRow-1; i >=0 ; i--){
-            if(column[i] === this.arrayPlayers[this.playerTurn].token){
+            if(column[i] === token){
                 numTokens++;
-                if(numTokens === 4){
+                if(numTokens === numTotalTokens){
                     return true;
                 }
             }else{
@@ -125,12 +125,12 @@ class Game{
         return false;
     }
 
-    checkRow(indexRow){
+    checkRow(indexRow,token,board,numTotalTokens){
         var numTokens = 0;
         for(var i = this.numCol-1; i >=0 ; i--){
-            if(this.gameBoard[i][indexRow] === this.arrayPlayers[this.playerTurn].token){
+            if(board[i][indexRow] === token){
                 numTokens++;
-                if(numTokens === 4){
+                if(numTokens === numTotalTokens){
                     return true;
                 }
             }else{
@@ -140,7 +140,7 @@ class Game{
         return false;
     }
 
-    checkRightDiagonal(indexCol,indexRow){
+    checkRightDiagonal(indexCol,indexRow,token,board,numTotalTokens){
         var numTokens = 0;
         var maxRow = this.numRow-1;
         var startRow = maxRow;
@@ -154,9 +154,9 @@ class Game{
             startCol = 0;
         }
         for(var i = startCol, j = startRow; i < this.numCol && j >= 0; i++, j--){
-            if(this.gameBoard[i][j] === this.arrayPlayers[this.playerTurn].token){
+            if(board[i][j] === token){
                 numTokens++;
-                if(numTokens === 4){
+                if(numTokens === numTotalTokens){
                     return true;
                 }
             }else{
@@ -166,7 +166,7 @@ class Game{
         return false;
     }
 
-    checkLeftDiagonal(indexCol,indexRow){
+    checkLeftDiagonal(indexCol,indexRow,token,board,numTotalTokens){
         var numTokens = 0;
         var maxRow = this.numRow-1;
         var maxCol = this.numCol-1;
@@ -182,9 +182,9 @@ class Game{
             startRow = indexRow + rest;
         }
         for(var i = startCol, j = startRow; i >= 0 && j >= 0; i--, j--){
-            if(this.gameBoard[i][j] === this.arrayPlayers[this.playerTurn].token){
+            if(board[i][j] === token){
                 numTokens++;
-                if(numTokens === 4){
+                if(numTokens === numTotalTokens){
                     return true;
                 }
             }else{
@@ -207,11 +207,100 @@ class Game{
         return false;
     }
 
-    randomPlay(){
-        return Math.floor(Math.random() * this.numCol);
+    randomMove(){
+        while (true) {
+            var indexCol = Math.floor(Math.random() * this.numCol);
+            if (this.gameBoard[indexCol][0] === '_') {
+                return indexCol;
+            } else {
+                if (this.checkAllColumnsFull()) {
+                    return null;
+                }
+            }
+        }
     }
 
+    getOtherPlayer(){
+        var indexPlayer = (this.playerTurn + 1) % this.arrayPlayers.length;
+        return this.arrayPlayers[indexPlayer];
+    }
+
+    getIndexColumnOtherPlayerWin(token,numTotalTokens,board,deep){
+
+        if(deep === undefined){
+            deep = 1;
+        }
+        var boardCopy = null;
+        for(var i = 0; i < this.numCol; i++) {
+            boardCopy = JSON.parse(JSON.stringify(board));
+            var indexRow = this.changeTokenInBoard(i, boardCopy, token);
+            if (deep === 1) {
+                var move = this.checkWin(i, indexRow, token, boardCopy, numTotalTokens);
+            }else {
+                var index = this.getIndexColumnOtherPlayerWin(token, numTotalTokens + 1, boardCopy, deep - 1);
+                if(index !==-1){
+                    return index;
+                }else{
+                    move=null;
+                }
+            }
+
+            if(move !== null){
+                if(move[2]){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    getNextBestMove(){
+
+        var  indexCol = this.getIndexColumnOtherPlayerWin(this.arrayPlayers[this.playerTurn].token,4,this.gameBoard);
+        if(indexCol !== -1 && this.gameBoard[indexCol][0] === '_'){
+            return indexCol;
+        }else{
+            indexCol = this.getIndexColumnOtherPlayerWin(this.getOtherPlayer().token,4,this.gameBoard);
+            if(indexCol !== -1 && this.gameBoard[indexCol][0] === '_'){
+                return indexCol;
+            }else {
+                indexCol = this.getIndexColumnOtherPlayerWin(this.getOtherPlayer().token,3,this.gameBoard,2);
+                if(indexCol !== -1 && this.gameBoard[indexCol][0] === '_'){
+                    return this.checkIfOtherPlayerWin(indexCol);
+                }else{
+                    indexCol = this.getIndexColumnOtherPlayerWin(this.arrayPlayers[this.playerTurn].token, 3,this.gameBoard);
+                    if (indexCol !== -1 && this.gameBoard[indexCol][0] === '_') {
+                        return this.checkIfOtherPlayerWin(indexCol);
+                    } else {
+                        indexCol = this.getIndexColumnOtherPlayerWin(this.arrayPlayers[this.playerTurn].token, 2,this.gameBoard);
+                        if (indexCol !== -1 && this.gameBoard[indexCol][0] === '_') {
+                            return this.checkIfOtherPlayerWin(indexCol);
+                        } else {
+                            return randomMove();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    checkIfOtherPlayerWin(indexCol){
+        var boardCopy = JSON.parse(JSON.stringify(this.gameBoard));
+        this.changeTokenInBoard(indexCol, boardCopy, this.arrayPlayers[this.playerTurn].token);
+        var indexColOther = this.getIndexColumnOtherPlayerWin(this.getOtherPlayer().token,4,boardCopy);
+        if(indexColOther === -1) {
+            return indexCol;
+        }else{
+            var indexRandom = this.randomMove();
+            while(indexRandom === indexCol){
+                indexRandom = this.randomMove();
+            }
+            return indexRandom;
+        }
+    }
 }
+
+
 
 Object.defineProperty(Game, 'full', {
     value: 'full',
