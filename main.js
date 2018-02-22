@@ -4,8 +4,9 @@ function initializeApp() {
     createBoard();
 }
 
-var player1 = new Player('Alex','x','player1',Player.human);
-var player2 = new Player('Evan','o','player2',Player.random_robot);
+const porcentageTopByRow = ['0.6%','14.9%','29%','43.2%','57.4%','71.6%'];
+var player1 = new Player('Alex','x','image/player1.png',Player.human);
+var player2 = new Player('Evan','o','image/player2.png',Player.random_robot);
 var players = [player1,player2];
 
 var game = new Game(7, 6, players);
@@ -22,12 +23,13 @@ function createBoard() {
             var square = $("<div>", {
                 class: "square"
             });
-            var circle = $('<div>',{
+           /* var circle = $('<div>',{
                class: "circle",
                 id: i + "_" + j
             });
+
+            circle.appendTo(square);*/
             square.appendTo(column);
-            circle.appendTo(square);
         }
         column.appendTo(".gameBoard")
     }
@@ -35,20 +37,31 @@ function createBoard() {
 }
 
 function clickColumnHandler(){
+
     if(!game.win) {
         var id = $(this).attr('id');
         var result = game.playTurn(parseInt(id));
-        var indexCol = result[0];
-        var indexRow = result[1];
+        if(result !== null) {
+            var indexCol = result[0];
+            var indexRow = result[1];
 
-        $('#' + indexCol + '_' + indexRow).addClass(game.arrayPlayers[game.playerTurn].classPlayer);
-        if(result[2]){
-            var playerName = game.arrayPlayers[game.playerTurn].name;
-            var winText = $('<div>',{
-                text: playerName + ' Won!',
-                class: 'winText'
+            var img = $('<img>',{
+                src: game.arrayPlayers[game.playerTurn].image,
+                class: 'token'
             });
-            $(".gameBoard").append(winText);
+
+            img.animate({
+                top: porcentageTopByRow[indexRow]
+            },1000);
+            $('#'+ indexCol).append(img);
+            if (result[2]) {
+                var playerName = game.arrayPlayers[game.playerTurn].name;
+                var winText = $('<div>', {
+                    text: playerName + ' Won!',
+                    class: 'winText'
+                });
+                $(".gameBoard").append(winText);
+            }
         }
     }
 }
