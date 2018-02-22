@@ -44,11 +44,12 @@ body {
 }
 
 .gameBoard {
+    display: inline-block;
     position: relative;
     height: 75vmin;
-    display: flex;
     width: 75vmin;
-    padding-top: 3%;
+    margin: auto;
+    padding-top: 10%;
 }
 
 .gameBoardContainer {
@@ -87,22 +88,25 @@ body {
 }
 
 .column {
+    display: inline-block;
+    position: relative;
     height: 100%;
-    /*border: solid;*/
-    width: 14.8%;
+    width: 14.2%;
     border-color: #00568f;
+    background-color: white;
+    z-index: 2;
 }
 
 .square {
-    height: 14.29%;
+    height: 14.2%;
     width: 100%;
-    border: solid 0.2vw;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #0084db;
-    border-color: #00568f;
+    background-image: url("image/board.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
+    z-index: 3;
 }
 
 .circle {
@@ -124,6 +128,7 @@ body {
     text-align: center;
     color: darkblue;
     font-weight: bold;
+    z-index: 4;
 }
 
 .player1{
@@ -144,3 +149,12 @@ body {
     border: 0;
 }
 
+.token{
+    position: absolute;
+    top: 1.7%;
+    left: 50.2%;
+    transform: translate(-50%,0);
+    height: 13%;
+    width: 91%;
+    z-index: -1;
+}

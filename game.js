@@ -2,10 +2,10 @@
 class Player{
 
 
-    constructor(name,token,classPlayer,type){
+    constructor(name,token,image,type){
         this.name = name;
         this.token = token;
-        this.classPlayer = classPlayer;
+        this.image = image;
         this.type = type || human;
     }
 
