@@ -14,7 +14,7 @@ body {
 .header {
     width: 100%;
     height: 10%;
-    background-color: green;
+    background-color: transparent;
 }
 
 .header > h2 {
@@ -24,19 +24,42 @@ body {
 }
 
 .leftNav {
-    width: 16%;
+    width: 20%;
     height: 90%;
-    background-color: rgb(255, 251, 4);
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.leftNav > p {
-    margin: 0;
+.player1Stats, .player2Stats {
+    width: 90%;
+    height: 30%;
+    border: solid;
+    border-radius: 5%;
 }
+
+.player1Stats h1, p {
+    margin-left: 10px;
+}
+
+.player2Stats > p {
+    margin-top: 55px;
+    float: left;
+}
+
+.player1Stats > p {
+    margin-top: 55px;
+    float: left;
+}
+/* .resetButtonDiv {
+
+} */
 
 .mainContent {
-    width: 84%;
+    width: 80%;
     height: 90%;
-    background: white;
     text-align: center;
 }
 
