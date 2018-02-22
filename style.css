@@ -34,10 +34,13 @@ body {
 }
 
 .mainContent {
-    width: 83%;
-    height: 89.4%;
+    width: 84%;
+    height: 90%;
     display: flex;
-    background-color: cadetblue
+    background: #de6161;
+	background: -webkit-linear-gradient(to bottom, #bbccff, #0012b3);
+    background: linear-gradient(to bottom, #bbccff, #0012b3);
+    flex-direction: column;
 }
 
 .gameBoard {
@@ -45,9 +48,42 @@ body {
     height: 75vmin;
     display: flex;
     width: 75vmin;
-    margin: auto;
-    padding-top: 1%;
+    padding-top: 3%;
+}
 
+.gameBoardContainer {
+    display: flex;
+    width: 54%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3%;
+    height: 83%;
+}
+
+.leftSide {
+    width: 5%;
+    border: solid;
+    height: 102%;
+    border-top-left-radius: 30% 25px;
+    border-top-right-radius: 30% 25px;
+    background-color: rgb(46, 102, 255);
+}
+
+.rightSide {
+    width: 5%;
+    border: solid;
+    height: 102%;
+    border-top-left-radius: 30% 25px;
+    border-top-right-radius: 30% 25px;
+    background-color: rgb(46, 102, 255);
+    margin-left: 1%;
+}
+
+.playerTurn {
+    text-align: center;
+    font-size: 190%;
+    font-family: fantasy;
+    color: rgb(23, 199, 0);
 }
 
 .column {
@@ -107,3 +143,4 @@ body {
     background-color: transparent;
     border: 0;
 }
+
