@@ -1,8 +1,4 @@
-var name = $("#firstPlayer").text();
-var secondName = $("#secondPlayer").text();
 
-
-debugger;
 class Player{
 
 

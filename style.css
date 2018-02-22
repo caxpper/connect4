@@ -216,20 +216,24 @@ body {
 }
 .firstPlayer{
     margin: 3%;
-    margin-left: 5%;
-    height: 5%;
+    height: 8%;
     display: inline-block;
 }
 .secondPlayer {
     margin: 3%;
-    height: 5%;
+    height: 8%;
     display: inline-block;
 }
 .input{
-    height: 10%;
+    height: 7%;
     width: 10%;
 }
 #submit{
     height: 19%;
     margin-right: 40%;
+}
+.coins{
+    vertical-align: middle;
+    height: 15%;
+    margin-left: 9%
 }

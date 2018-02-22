@@ -1,12 +1,29 @@
 //Dynamic creation of game board//
 $(document).ready(initializeApp);
+
 function initializeApp() {
     createBoard();
     $("#submit").click(closeModal);
+    $("#submit").click(grabData);
 }
+
 function closeModal() {
     $('#modal').hide();
 }
+
+function grabData() {
+    var firstName = $("#firstname").val();
+    var secondName = $("#secondname").val();
+    var opponent1 = $("input[name=opponent1]:checked").val();
+    var opponent = $("input[name=opponent]:checked").val();
+    var chips = $("input[name=chip1]:checked").val();
+    var chips1 = $("input[name=chip]:checked").val();
+    console.log(firstName,secondName,opponent1,opponent,chips,chips1);
+    // var player1 = new Player('Alex','x','player1',opponent);
+    // var player2 = new Player('Evan','o','player2',opponent1);
+    // var players = [player1,player2];
+}
+
 
 var player1 = new Player('Alex','x','player1',Player.human);
 var player2 = new Player('Evan','o','player2',Player.random_robot);
@@ -37,7 +54,6 @@ function createBoard() {
     }
 
 }
-
 function clickColumnHandler(){
     if(!game.win) {
         var id = $(this).attr('id');

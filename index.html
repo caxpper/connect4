@@ -18,28 +18,33 @@
                     <h1 class="modalH1">Welcome to Connect 4!</h1>
                     <div class="form1Container">
                         <div class="form2">
-                            First player name:<br>
-                            <input type="text" name="firstname" class="firstPlayer">
+                            <strong>First player name:</strong><br>
+                            <input type="text" id="firstname" class="firstPlayer" value="name">
                             <br>
-                            <input type="radio" name="opponent1" value="Human" checked class="input"> Human<br>
+                            <input type="radio" name="opponent1" value="human" class="input"> Human<br>
                             <br>
-                            <input type="radio" name="opponent1" value="Dumb-A.I" class="input"> Dumb A.i<br>
+                            <input type="radio" name="opponent1" value="random_robot" class="input"> Dumb A.i<br>
                             <br>
-                            <input type="radio" name="opponent1" value="Smart-A.I" class="input"> Smart A.i
+                            <input type="radio" name="opponent1" value="ia_robot" class="input"> Smart A.i
                             <br>
                         </div>
                         <div class="form21">
+                            <strong>Select Player Chip</strong>
                             <br>
-                            <input type="radio" name="chip1" value="Human" checked class="input"> Chip 1
-                            <br>
-                            <br>
-                            <input type="radio" name="chip1" value="Dumb-A.I" class="input"> Chip 2
-                            <br>
-                            <br>
-                            <input type="radio" name="chip1" value="Smart-A.I" class="input"> Chip 3
+                            <input type="radio" name="chip1" value="chip" class="input"> Chip 1
+                            <img src="image/greencoin.png" class="coins"/>
                             <br>
                             <br>
-                            <input type="radio" name="chip1" value="Smart-A.I" class="input"> Chip 4
+                            <input type="radio" name="chip1" value="chip1" class="input"> Chip 2
+                            <img src="image/yellowcoin.png" class="coins"/>
+                            <br>
+                            <br>
+                            <input type="radio" name="chip1" value="chip2" class="input"> Chip 3
+                            <img src="image/player1.png" class="coins"/>
+                            <br>
+                            <br>
+                            <input type="radio" name="chip1" value="chip3" class="input"> Chip 4
+                            <img src="image/player2.png" class="coins"/>
                         </div>
                     </div>
                     <div class="middle">
@@ -47,34 +52,39 @@
                         <p id="rules">To win Connect Four you must be the first player to get four of your colored checkers
                             in a row either horizontally, vertically or diagonally. </p>
                         <div class="modal-footer">
-                            <button type="button" id="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                            <button type="button" id="submit" class="btn btn-primary" data-dismiss="modal">Play Game!</button>
                         </div>
                     </div>
                 <div class="form2container">
                     <div class="form1">
-                            Second player name:<br>
-                            <input type="text" name="secondname" class="secondPlayer">
+                        <strong>Second player name:</strong><br>
+                            <input type="text" id="secondname" class="secondPlayer" value="name">
                             <br>
-                            <input type="radio" name="opponent" value="Human" checked class="input"> Human<br>
+                            <input type="radio" name="opponent" value="human" class="input"> Human<br>
                             <br>
-                            <input type="radio" name="opponent" value="Dumb-A.I" class="input"> Dumb A.i<br>
+                            <input type="radio" name="opponent" value="random_robot" class="input"> Dumb A.i<br>
                             <br>
-                            <input type="radio" name="opponent" value="Smart-A.I" class="input"> Smart A.i
+                            <input type="radio" name="opponent" value="ia_robot" class="input"> Smart A.i
                             <br>
                         </div>
                             <br>
                         <div class="form11">
+                            <strong>Select Player Chip</strong>
                             <br>
-                            <input type="radio" name="chip" value="Human" checked class="input"> Chip 1
-                            <br>
-                            <br>
-                            <input type="radio" name="chip" value="Dumb-A.I" class="input"> Chip 2
-                            <br>
-                            <br>
-                            <input type="radio" name="chip" value="Smart-A.I" class="input"> Chip 3
+                            <input type="radio" name="chip" value="chip" class="input"> Chip 1
+                            <img src="image/greencoin.png" class="coins"/>
                             <br>
                             <br>
-                            <input type="radio" name="chip" value="Smart-A.I" class="input"> Chip 4
+                            <input type="radio" name="chip" value="chip1" class="input"> Chip 2
+                            <img src="image/yellowcoin.png" class="coins"/>
+                            <br>
+                            <br>
+                            <input type="radio" name="chip" value="chip2" class="input"> Chip 3
+                            <img src="image/player1.png" class="coins"/>
+                            <br>
+                            <br>
+                            <input type="radio" name="chip" value="chip3" class="input"> Chip 4
+                            <img src="image/player2.png" class="coins"/>
                         <br>
                     </div>
                 </div>
