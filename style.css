@@ -37,6 +37,7 @@ body {
     width: 83%;
     height: 89.4%;
     display: flex;
+    background-color: cadetblue
 }
 
 .gameBoard {
