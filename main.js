@@ -2,6 +2,10 @@
 $(document).ready(initializeApp);
 function initializeApp() {
     createBoard();
+    $("#submit").click(closeModal);
+}
+function closeModal() {
+    $('#modal').hide();
 }
 
 var player1 = new Player('Alex','x','player1',Player.human);
@@ -52,10 +56,5 @@ function clickColumnHandler(){
         }
     }
 }
-window.onload = function () {
-    document.getElementById('button').onclick = function () {
-        document.getElementById('modal').style.display = "none"
-    };
-};
 
 
