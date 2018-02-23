@@ -1,6 +1,8 @@
 body {
     width: 98vw;
     height: 100vh;
+    background-image: url("image/felt.png");
+    font-family: 'VT323', monospace;
 }
 
 .gameContainer {
@@ -24,7 +26,7 @@ body {
 }
 
 .leftNav {
-    width: 20%;
+    width: 25%;
     height: 90%;
     display: flex;
     flex-direction: column;
@@ -38,6 +40,7 @@ body {
     height: 30%;
     border: solid;
     border-radius: 5%;
+    background-color: white;
 }
 
 .player1Stats h1, p {
@@ -58,7 +61,7 @@ body {
 } */
 
 .mainContent {
-    width: 80%;
+    width: 75%;
     height: 90%;
     text-align: center;
 }
