@@ -52,10 +52,10 @@ class Game{
     }
 
     /**
-     *
+     * Inicialize the board (array of array) with underscot
      * @param numCol
      * @param numRow
-     * @returns {Array}
+     * @returns {Array} board
      */
     initGameBoard(numCol,numRow){
         var gameBoard = [];
@@ -70,7 +70,7 @@ class Game{
     }
 
     /**
-     *
+     *  Inicialize board and reset player turn and win condition
      */
     resetGame(){
         this.gameBoard = this.initGameBoard(this.numCol,this.numRow);
@@ -79,24 +79,33 @@ class Game{
     }
 
     /**
-     *
+     * Set the token in the correct column
+     * check if the current player win
+     * If it doesn't win check if the players tie
+     * change the turn
      * @param indexCol
-     * @returns {*}
+     * @returns {*}return an array with the col and the row and if the player win
+     *              null if the column is full
      */
     playTurn(indexCol){
+        //Set the token in the correct column
         var indexRow = this.changeTokenInBoard(indexCol,this.gameBoard,this.arrayPlayers[this.playerTurn].token);
         if(indexRow === null){
-            console.log("column full");
+           //return null if the column is null
             return null;
         }else {
+            //check if the current player win
             var result = this.checkWin(indexCol, indexRow,this.arrayPlayers[this.playerTurn].token,this.gameBoard,4);
             if(result[2] === false){
+                //Check if the players tie
                 if(this.checkAllColumnsFull()){
+                    //return an array with the col and the row and if they tie
                    return [indexCol,indexRow,Game.full];
                 }
             }else{
                 this.win = true;
             }
+            //change the turn
             this.playerTurn = (this.playerTurn + 1) % this.arrayPlayers.length;
             return result;
         }
@@ -104,11 +113,12 @@ class Game{
     }
 
     /**
+     *  Change the token for the column selected
      *
      * @param indexCol
      * @param board
      * @param token
-     * @returns {*}
+     * @returns {*} the index of the column or null if it can find a column free
      */
     changeTokenInBoard(indexCol,board,token){
 
@@ -123,13 +133,14 @@ class Game{
     }
 
     /**
+     * check if the player win for row, column and both diagonal form where the token is place.
      *
-     * @param indexCol
-     * @param indexRow
-     * @param token
-     * @param board
-     * @param numTotalTokens
-     * @returns {*[]}
+     * @param indexCol: index of the column
+     * @param indexRow: index of the row
+     * @param token: letter represent the player in the board
+     * @param board: board
+     * @param numTotalTokens: num of tokens you need to win
+     * @returns {*[]} array with the index of column and row and if the player win
      */
     checkWin(indexCol,indexRow,token,board,numTotalTokens){
         if (this.checkRow(indexRow,token,board,numTotalTokens)){

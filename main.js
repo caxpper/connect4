@@ -106,7 +106,7 @@ function clickColumnHandler(event,id){
             var indexRow = result[1];
 
             var img = $('<img>', {
-                src: game.getOtherPlayer().image,
+                src: result[2] === Game.full ? game.arrayPlayers[game.playerTurn].image : game.getOtherPlayer().image,
                 class: 'token'
             });
 
@@ -144,7 +144,9 @@ function clickColumnHandler(event,id){
                     }
                 },1000);
             }else{
+
                 if(game.arrayPlayers[game.playerTurn].type === Player.random_robot || game.arrayPlayers[game.playerTurn].type === Player.ia_robot){
+                    $('.column').addClass('disableClicks');
                     setTimeout(function () {
 
                         if(game.arrayPlayers[game.playerTurn].type === Player.random_robot){
@@ -159,6 +161,7 @@ function clickColumnHandler(event,id){
                             });
                             $(".gameBoard").append(winText);
                         }else {
+                            $('.column').removeClass('disableClicks');
                             clickColumnHandler(this, result);
                         }
                     },1100);

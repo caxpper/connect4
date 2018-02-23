@@ -1,7 +1,7 @@
 body {
     width: 98vw;
     height: 100vh;
-    background-image: url("image/felt.png");
+    background-color: white;
     font-family: 'VT323', monospace;
 }
 
@@ -21,6 +21,10 @@ body {
     font-size: 7vh;
 }
 
+.resetButtonDiv button{
+    font-size: 2vmin;
+}
+
 .leftNav {
     width: 25%;
     height: 90%;
@@ -29,6 +33,7 @@ body {
     background-color: transparent;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 4%;
 }
 
 .player1Stats, .player2Stats {
