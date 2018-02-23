@@ -6,7 +6,7 @@ class Player{
         this.name = name;
         this.token = token;
         this.image = image;
-        this.type = type || human;
+        this.type = type || Player.human;
     }
 
     getType(){
@@ -276,7 +276,7 @@ class Game{
                         if (indexCol !== -1 && this.gameBoard[indexCol][0] === '_') {
                             return this.checkIfOtherPlayerWin(indexCol);
                         } else {
-                            return randomMove();
+                            return this.randomMove();
                         }
                     }
                 }
