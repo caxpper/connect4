@@ -51,6 +51,12 @@ class Game{
         this.win = false;
     }
 
+    /**
+     *
+     * @param numCol
+     * @param numRow
+     * @returns {Array}
+     */
     initGameBoard(numCol,numRow){
         var gameBoard = [];
         for(var i = 0; i < numCol; i++){
@@ -63,6 +69,20 @@ class Game{
         return gameBoard;
     }
 
+    /**
+     *
+     */
+    resetGame(){
+        this.gameBoard = this.initGameBoard(this.numCol,this.numRow);
+        this.playerTurn = 0;
+        this.win = false;
+    }
+
+    /**
+     *
+     * @param indexCol
+     * @returns {*}
+     */
     playTurn(indexCol){
         var indexRow = this.changeTokenInBoard(indexCol,this.gameBoard,this.arrayPlayers[this.playerTurn].token);
         if(indexRow === null){
@@ -83,6 +103,13 @@ class Game{
         return false;
     }
 
+    /**
+     *
+     * @param indexCol
+     * @param board
+     * @param token
+     * @returns {*}
+     */
     changeTokenInBoard(indexCol,board,token){
 
         var column = board[indexCol];
@@ -95,6 +122,15 @@ class Game{
         return null;
     }
 
+    /**
+     *
+     * @param indexCol
+     * @param indexRow
+     * @param token
+     * @param board
+     * @param numTotalTokens
+     * @returns {*[]}
+     */
     checkWin(indexCol,indexRow,token,board,numTotalTokens){
         if (this.checkRow(indexRow,token,board,numTotalTokens)){
             return [indexCol,indexRow,true];
@@ -108,7 +144,14 @@ class Game{
         return [indexCol,indexRow,false];
     }
 
-
+    /**
+     *
+     * @param indexCol
+     * @param token
+     * @param board
+     * @param numTotalTokens
+     * @returns {boolean}
+     */
     checkColumn(indexCol,token,board,numTotalTokens){
         var numTokens = 0;
         var column = board[indexCol];
@@ -125,6 +168,14 @@ class Game{
         return false;
     }
 
+    /**
+     *
+     * @param indexRow
+     * @param token
+     * @param board
+     * @param numTotalTokens
+     * @returns {boolean}
+     */
     checkRow(indexRow,token,board,numTotalTokens){
         var numTokens = 0;
         for(var i = this.numCol-1; i >=0 ; i--){
@@ -140,6 +191,15 @@ class Game{
         return false;
     }
 
+    /**
+     *
+     * @param indexCol
+     * @param indexRow
+     * @param token
+     * @param board
+     * @param numTotalTokens
+     * @returns {boolean}
+     */
     checkRightDiagonal(indexCol,indexRow,token,board,numTotalTokens){
         var numTokens = 0;
         var maxRow = this.numRow-1;
@@ -166,6 +226,15 @@ class Game{
         return false;
     }
 
+    /**
+     *
+     * @param indexCol
+     * @param indexRow
+     * @param token
+     * @param board
+     * @param numTotalTokens
+     * @returns {boolean}
+     */
     checkLeftDiagonal(indexCol,indexRow,token,board,numTotalTokens){
         var numTokens = 0;
         var maxRow = this.numRow-1;
@@ -194,6 +263,10 @@ class Game{
         return false;
     }
 
+    /**
+     *
+     * @returns {boolean}
+     */
     checkAllColumnsFull(){
         var numTokens = 0;
         for(var i = 0; i < this.numCol; i++){
@@ -207,6 +280,10 @@ class Game{
         return false;
     }
 
+    /**
+     *
+     * @returns {*}
+     */
     randomMove(){
         while (true) {
             var indexCol = Math.floor(Math.random() * this.numCol);
@@ -220,11 +297,23 @@ class Game{
         }
     }
 
+    /**
+     *
+     * @returns {*}
+     */
     getOtherPlayer(){
         var indexPlayer = (this.playerTurn + 1) % this.arrayPlayers.length;
         return this.arrayPlayers[indexPlayer];
     }
 
+    /**
+     *
+     * @param token
+     * @param numTotalTokens
+     * @param board
+     * @param deep
+     * @returns {number}
+     */
     getIndexColumnOtherPlayerWin(token,numTotalTokens,board,deep){
 
         if(deep === undefined){
@@ -254,6 +343,10 @@ class Game{
         return -1;
     }
 
+    /**
+     *
+     * @returns {number}
+     */
     getNextBestMove(){
 
         var  indexCol = this.getIndexColumnOtherPlayerWin(this.arrayPlayers[this.playerTurn].token,4,this.gameBoard);
@@ -284,6 +377,11 @@ class Game{
         }
     }
 
+    /**
+     *
+     * @param indexCol
+     * @returns {*}
+     */
     checkIfOtherPlayerWin(indexCol){
         var boardCopy = JSON.parse(JSON.stringify(this.gameBoard));
         this.changeTokenInBoard(indexCol, boardCopy, this.arrayPlayers[this.playerTurn].token);

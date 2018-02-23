@@ -13,7 +13,6 @@
     <title>Connect 4</title>
 </head>
 <body>
-
             <div id="modal">
                 <div class="modalcontent">
                     <h1 class="modalH1">Welcome to Connect 4!</h1>
@@ -21,7 +20,7 @@
                         <div class="form2">
                             <strong>First player name:</strong>
 
-                            <input type="text" id="firstname" class="firstPlayer" value="name"><br>
+                            <input type="text" id="firstname" class="firstPlayer" value="Name 1"><br>
                             <div>
                             <input type="radio" id="type1" name="typePlayer1" value="human" class="input" checked="checked">
                             <label for="type1"> Human</label>
@@ -65,7 +64,7 @@
                 <div class="form2container">
                     <div class="form1">
                         <strong>Second player name:</strong><br>
-                            <input type="text" id="secondname" class="secondPlayer" value="name">
+                            <input type="text" id="secondname" class="secondPlayer" value="Name 2">
                             <div>
                                 <input type="radio" id="type11" name="typePlayer2" value="human" class="input" checked="checked">
                                 <label for="type11"> Human</label>
@@ -106,17 +105,14 @@
         </div>
 
     <div class="gameContainer">
-        <div class="header">
-            <h2>Connect Four</h2>
-        </div>
         <div class="leftNav">
             <div class="player1Stats">
-                <h1>Player1:</h1>
-                <p>WINS: </p>
+                <h1>Player1: <span id="namePlayer1"></span></h1>
+                <h1>WINS: <span id="winPlayer1"></span></h1>
             </div>
             <div class="player2Stats">
-                <h1>Player2:</h1>
-                <p>WINS: </p>
+                <h1>Player2:  <span id="namePlayer2"></span></h1>
+                <h1>WINS: <span id="winPlayer2"></span></h1>
             </div>
             <div class="resetButtonDiv">
                 <button>RESET GAME</button>
@@ -124,6 +120,7 @@
         </div>
         <div class="mainContent">
             <div class="gameBoardContainer">
+                <h2>Connect Four</h2>
                 <div class="leftSide">
                     <p></p>
                 </div>
