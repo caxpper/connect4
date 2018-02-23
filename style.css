@@ -69,7 +69,7 @@ body {
 .gameBoard {
     display: inline-block;
     position: relative;
-    height: 88%;
+    height: 94%;
     width: 88%;
     margin: auto;
     padding-top: 6%;
@@ -85,7 +85,7 @@ body {
 
 .leftSide {
     display: inline-block;
-    width: 5%;
+    width: 6%;
     border: solid 0.3vmin;
     height: 85%;
     border-top-left-radius: 30% 25px;
@@ -97,7 +97,7 @@ body {
 
 .rightSide {
     display: inline-block;
-    width: 5%;
+    width: 6%;
     border: solid 0.3vmin;
     height: 85%;
     border-top-left-radius: 30% 25px;
@@ -177,16 +177,23 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    width: 50%;
-    height: 70%;
+    width: 65%;
+    height: 75%;
     padding: 20px;
+    border-radius: 25px;
 }
+
+.modal-foot{
+    text-align: center;
+    font-size: 1.6vmin;
+}
+
 .modalconent > form {
     width: 50%;
     height: 30%;
 }
 .modalH1{
-    font-size: 32pt;
+    font-size: 4vmin;
     margin: 0;
     background-color: #1f98ff;
     height: 10%;
@@ -194,22 +201,12 @@ body {
     border-radius: 20px 20px 0px 0px;
 }
 
-/*.rulesContainer{*/
-    /*font-size: 15pt;*/
-    /*text-align: center;*/
-    /*width: 35%;*/
-    /*height: 81%;*/
-    /*float: right;*/
-    /*margin-right: 8%;*/
-    /*margin-left: 7%;*/
-    /*font-family: monospace;*/
-/*}*/
 .form1{
     margin-left: -2px;
     margin-top: -2px;
     width: 100.5%;
     float: left;
-    font-size: 17pt;
+    font-size: 1.8vmin;
     height: 51.5%;
     background-color: #1f98ff;
 }
@@ -217,30 +214,33 @@ body {
     float: left;
     height: 87%;
     width: 33%;
+    text-align: center;
 }
 .form2container{
     float: right;
     height: 87%;
     width: 33%;
+    text-align: center;
 }
 .middle{
     text-align: center;
     float: left;
     width: 33.9%;
-    height: 89.6%;
+    height: 88.8%;
     display: inline-block;
     background-color: lightskyblue;
 }
-    #rules{
-        font-size: 21pt;
-        margin: 10%;
-    }
+#rules{
+    font-size: 2vmin;
+    margin: 10%;
+}
+
 .form11{
     margin-left: -2px;
     margin-top: -2px;
     width: 100.5%;
     float: left;
-    font-size: 17pt;
+    font-size: 1.8vmin;
     height: 51.5%;
     background-color: #1f98ff;
     border-radius: 0px 0px 20px 0px;
@@ -250,7 +250,7 @@ body {
     margin-top: -2px;
     width: 100%;
     float: left;
-    font-size: 17pt;
+    font-size: 1.8vmin;
     height: 51.5%;
     background-color: #1f98ff;
  }
@@ -258,7 +258,7 @@ body {
     margin-right: -2px;
     margin-top: -2px;
     width: 100%;
-    font-size: 17pt;
+    font-size: 1.8vmin;
     height: 51.5%;
     background-color: #1f98ff;
     display: inline-block;
@@ -266,7 +266,7 @@ body {
 }
 #connect4Header{
     margin: 0;
-    font-size: 32pt;
+    font-size: 2vmin;
 }
 .firstPlayer{
     margin: 3%;
@@ -278,14 +278,22 @@ body {
     height: 8%;
     display: inline-block;
 }
-.input{
-    height: 7%;
-    width: 10%;
+
+
+input[type=radio]{
+    transform: scale(2);
 }
-#submit{
-    height: 19%;
-    margin-right: 40%;
+
+label{
+    margin: 5% 5% 15% 5%;
 }
+
+input[type=text]{
+    border-radius: 10px;
+    height: 10%;
+    width: 50%;
+}
+
 .coins{
     vertical-align: middle;
     height: 15%;
