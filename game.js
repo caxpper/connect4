@@ -156,11 +156,11 @@ class Game{
     }
 
     /**
-     *
-     * @param indexCol
-     * @param token
-     * @param board
-     * @param numTotalTokens
+     *  Check if when the player put the token in the indexCol the player have 4 tokens in the same column
+     * @param indexCol          column where the player click
+     * @param token             letter represent the player
+     * @param board             array of arrays
+     * @param numTotalTokens    number of tokens together the player need to win
      * @returns {boolean}
      */
     checkColumn(indexCol,token,board,numTotalTokens){
@@ -180,11 +180,11 @@ class Game{
     }
 
     /**
-     *
-     * @param indexRow
-     * @param token
-     * @param board
-     * @param numTotalTokens
+     *  Check if when the player put the token in the indexCol the player have 4 tokens in the same row
+     * @param indexRow          row where the player click
+     * @param token             letter represent the player
+     * @param board             array of arrays
+     * @param numTotalTokens    number of tokens together the player need to win
      * @returns {boolean}
      */
     checkRow(indexRow,token,board,numTotalTokens){
@@ -203,12 +203,12 @@ class Game{
     }
 
     /**
-     *
-     * @param indexCol
-     * @param indexRow
-     * @param token
-     * @param board
-     * @param numTotalTokens
+     *  Check if when the player put the token in the indexCol the player have 4 tokens in the same right diagonal
+     * @param indexCol          column where the player click
+     * @param indexRow          row where the player put the token
+     * @param token             letter represent the player
+     * @param board             array of arrays
+     * @param numTotalTokens    number of tokens together the player need to win
      * @returns {boolean}
      */
     checkRightDiagonal(indexCol,indexRow,token,board,numTotalTokens){
@@ -216,14 +216,20 @@ class Game{
         var maxRow = this.numRow-1;
         var startRow = maxRow;
         var startCol = 0;
+
+        //check if the square where it's the token is under or over the center diagonal
         if(maxRow <= indexRow + indexCol){
+            //we set the start point in the last row
             startRow = maxRow;
             var rest = maxRow - indexRow;
             startCol = indexCol - rest;
         }else{
+            //we set the start point in the first column
             startRow = indexRow + indexCol;
             startCol = 0;
         }
+        //and we go up and to the right
+        //checking if there are 4 tokens together
         for(var i = startCol, j = startRow; i < this.numCol && j >= 0; i++, j--){
             if(board[i][j] === token){
                 numTokens++;
@@ -238,12 +244,12 @@ class Game{
     }
 
     /**
-     *
-     * @param indexCol
-     * @param indexRow
-     * @param token
-     * @param board
-     * @param numTotalTokens
+     *  Check if when the player put the token in the indexCol the player have 4 tokens in the same left diagonal
+     * @param indexCol          column where the player click
+     * @param indexRow          row where the player put the token
+     * @param token             letter represent the player
+     * @param board             array of arrays
+     * @param numTotalTokens    number of tokens together the player need to win
      * @returns {boolean}
      */
     checkLeftDiagonal(indexCol,indexRow,token,board,numTotalTokens){
@@ -252,15 +258,21 @@ class Game{
         var maxCol = this.numCol-1;
         var startRow = maxRow;
         var startCol = 0;
+
+        //check if the square where it's the token is under or over the center diagonal
         if(maxCol - maxRow >= indexCol - indexRow){
+            //we set the start point in the last row
             startRow = maxRow;
             var rest = maxRow - indexRow;
             startCol = indexCol + rest;
         }else{
+            //we set the start point in the last column
             startCol = maxCol;
             var rest = maxCol - indexCol;
             startRow = indexRow + rest;
         }
+        //and we go up and to the left
+        //checking if there are 4 tokens together
         for(var i = startCol, j = startRow; i >= 0 && j >= 0; i--, j--){
             if(board[i][j] === token){
                 numTokens++;
@@ -275,7 +287,7 @@ class Game{
     }
 
     /**
-     *
+     * Check If the board is full
      * @returns {boolean}
      */
     checkAllColumnsFull(){
@@ -292,7 +304,8 @@ class Game{
     }
 
     /**
-     *
+     * //return a random number between the index columns
+     * // null if the board is full
      * @returns {*}
      */
     randomMove(){
@@ -309,6 +322,7 @@ class Game{
     }
 
     /**
+     * return the other player is not currently playing
      *
      * @returns {*}
      */
@@ -318,11 +332,12 @@ class Game{
     }
 
     /**
+     * return the index of the column if a specific player win
      *
-     * @param token
-     * @param numTotalTokens
-     * @param board
-     * @param deep
+     * @param token             letter represents a player
+     * @param numTotalTokens    number of total tokens have to be together to win
+     * @param board             board
+     * @param deep              how many plays the function is going to look at
      * @returns {number}
      */
     getIndexColumnOtherPlayerWin(token,numTotalTokens,board,deep){
@@ -332,11 +347,14 @@ class Game{
         }
         var boardCopy = null;
         for(var i = 0; i < this.numCol; i++) {
+            //we copy the board to make the next plays without change the original
             boardCopy = JSON.parse(JSON.stringify(board));
             var indexRow = this.changeTokenInBoard(i, boardCopy, token);
             if (deep === 1) {
+                //if we are in the current level we want to check we check if the player win
                 var move = this.checkWin(i, indexRow, token, boardCopy, numTotalTokens);
             }else {
+                //if we aren't in the last deep level we call back this function with a lower level
                 var index = this.getIndexColumnOtherPlayerWin(token, numTotalTokens + 1, boardCopy, deep - 1);
                 if(index !==-1){
                     return index;
@@ -355,32 +373,41 @@ class Game{
     }
 
     /**
-     *
+     *  return the best index of column to play for a robot
      * @returns {number}
      */
     getNextBestMove(){
 
+        //Check if the current player will win with 4 tokens
         var  indexCol = this.getIndexColumnOtherPlayerWin(this.arrayPlayers[this.playerTurn].token,4,this.gameBoard);
         if(indexCol !== -1 && this.gameBoard[indexCol][0] === '_'){
             return indexCol;
         }else{
+            //Check if the other player will win with 4 tokens
             indexCol = this.getIndexColumnOtherPlayerWin(this.getOtherPlayer().token,4,this.gameBoard);
             if(indexCol !== -1 && this.gameBoard[indexCol][0] === '_'){
                 return indexCol;
             }else {
+                //Check if the other player will win in the next 2 turns
                 indexCol = this.getIndexColumnOtherPlayerWin(this.getOtherPlayer().token,3,this.gameBoard,2);
                 if(indexCol !== -1 && this.gameBoard[indexCol][0] === '_'){
+                    //check that the other player will win in the next turn after my move
                     return this.checkIfOtherPlayerWin(indexCol);
                 }else{
+                    //check if the current player will win with 3 tokens
                     indexCol = this.getIndexColumnOtherPlayerWin(this.arrayPlayers[this.playerTurn].token, 3,this.gameBoard);
                     if (indexCol !== -1 && this.gameBoard[indexCol][0] === '_') {
+                        //check that the other player will win in the next turn after my move
                         return this.checkIfOtherPlayerWin(indexCol);
                     } else {
+                        //check if the current player will win with 2 tokens
                         indexCol = this.getIndexColumnOtherPlayerWin(this.arrayPlayers[this.playerTurn].token, 2,this.gameBoard);
                         if (indexCol !== -1 && this.gameBoard[indexCol][0] === '_') {
+                            //check that the other player will win in the next turn after my move
                             return this.checkIfOtherPlayerWin(indexCol);
                         } else {
-                            return this.randomMove();
+                            //return random move if the othe player don't win in the next move.
+                            return this.checkIfOtherPlayerWin(this.randomMove());
                         }
                     }
                 }
@@ -389,7 +416,7 @@ class Game{
     }
 
     /**
-     *
+     * check that the other player will win in the next turn after my move
      * @param indexCol
      * @returns {*}
      */
@@ -409,8 +436,7 @@ class Game{
     }
 }
 
-
-
+//Constant
 Object.defineProperty(Game, 'full', {
     value: 'full',
     writable : false,
